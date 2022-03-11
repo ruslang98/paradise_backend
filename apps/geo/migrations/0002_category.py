@@ -6,16 +6,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('geo', '0001_point'),
+        ("geo", "0001_point"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=32, verbose_name='Фракция')),
-                ('transliteration', models.CharField(max_length=32, verbose_name='Транслит')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=32, verbose_name="Фракция")),
+                (
+                    "transliteration",
+                    models.CharField(max_length=32, verbose_name="Транслит"),
+                ),
             ],
         ),
     ]
