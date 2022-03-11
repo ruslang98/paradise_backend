@@ -7,3 +7,7 @@ class Point(models.Model):
     longitude = models.CharField(max_length=128, verbose_name="Долгота")
     latitude = models.CharField(max_length=128, verbose_name="Широта")
     description = models.CharField(max_length=255, verbose_name="Описание")
+
+    @property
+    def categories(self):
+        return [item.category for item in self.pointcategory_set.select_related("category")]
