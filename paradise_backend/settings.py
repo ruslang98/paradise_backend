@@ -6,9 +6,9 @@ SECRET_KEY = 'django-insecure-9aa^@mx_^4*609%mg=_e2$-pk*lp_(^g$-$722&e_=@3+5$)pn
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
-INSTALLED_APPS = [
+CONTRIB_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -16,6 +16,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+PROJECT_APPS = [
+    "apps.geo",
+]
+
+EXTERNAL_APPS = [
+    "rest_framework",
+    "drf_yasg",
+]
+
+INSTALLED_APPS = CONTRIB_APPS + PROJECT_APPS + EXTERNAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
