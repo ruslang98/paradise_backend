@@ -39,7 +39,7 @@ class PointList(BaseView):
         return points
 
     def _get_points(self, request):
-        points = Point.objects.all()
+        points = Point.objects.all().order_by("-id")
         points = self._filter(request, points)
         return points
 
