@@ -1,10 +1,10 @@
 from drf_yasg.utils import swagger_auto_schema
-
 from rest_framework.response import Response
 
+from apps.geo.api.serializers import LabelSerializer
+from apps.geo.api.swagger import label_manual_parameters
 from apps.geo.api.views import BaseView
 from apps.geo.models import Label
-from apps.geo.api.swagger import label_manual_parameters
 
 
 class LabelList(BaseView):
@@ -15,7 +15,7 @@ class LabelList(BaseView):
         return labels
 
     def _get_lables(self, request):
-        labels = Label.objects.values("id", "title", "category_id")
+        labels = Label.objects.all()
         labels = self._filters(request, labels)
         return labels
 
@@ -24,4 +24,5 @@ class LabelList(BaseView):
     )
     def get(self, request):
         labels = self._get_lables(request)
-        return Response({"error": "not", "data": labels})
+        serializers = LabelSerializer(labels, many=True)
+        return Response({"error": "not", "data": serializers.data})

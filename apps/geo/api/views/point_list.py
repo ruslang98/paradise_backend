@@ -1,10 +1,10 @@
 from drf_yasg.utils import swagger_auto_schema
-
 from rest_framework.response import Response
 
-from apps.geo.api.views import BaseView
-from apps.geo.models import Label, PointCategory, Point
+from apps.geo.api.serializers import PointSerializer
 from apps.geo.api.swagger import point_manual_parameters
+from apps.geo.api.views import BaseView
+from apps.geo.models import Label, Point, PointCategory
 
 
 class PointList(BaseView):
@@ -39,18 +39,8 @@ class PointList(BaseView):
         return points
 
     def _get_points(self, request):
-        points = Point.objects.values("id", "lng", "lat", "address", "description")
+        points = Point.objects.all()
         points = self._filter(request, points)
-        for point in points:
-            point["id"] = str(point["id"])
-            point["categories"] = [
-                {
-                    "id": point.id,
-                    "title": point.title,
-                    "transliteration": point.transliteration,
-                }
-                for point in Point.objects.get(id=point["id"]).categories
-            ]
         return points
 
     @swagger_auto_schema(
@@ -58,4 +48,5 @@ class PointList(BaseView):
     )
     def get(self, request):
         points = self._get_points(request)
-        return Response({"error": "not", "data": points})
+        serializer = PointSerializer(points, many=True)
+        return Response({"error": "not", "data": serializer.data})
