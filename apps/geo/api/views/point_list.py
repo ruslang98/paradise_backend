@@ -43,6 +43,14 @@ class PointList(BaseView):
         points = self._filter(request, points)
         for point in points:
             point["id"] = str(point["id"])
+            point["categories"] = [
+                {
+                    "id": point.id,
+                    "title": point.title,
+                    "transliteration": point.transliteration,
+                }
+                for point in Point.objects.get(id=point["id"]).categories
+            ]
         return points
 
     @swagger_auto_schema(

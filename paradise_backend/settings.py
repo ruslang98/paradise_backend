@@ -26,11 +26,7 @@ PROJECT_APPS = [
     "apps.geo",
 ]
 
-EXTERNAL_APPS = [
-    "rest_framework",
-    "drf_yasg",
-    "corsheaders"
-]
+EXTERNAL_APPS = ["rest_framework", "drf_yasg", "corsheaders"]
 
 INSTALLED_APPS = CONTRIB_APPS + PROJECT_APPS + EXTERNAL_APPS
 

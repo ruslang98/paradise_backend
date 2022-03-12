@@ -4,9 +4,4 @@ from .label_list import LabelList
 from .point_list import PointList
 
 
-___all__ = [
-    BaseView,
-    CategoryList,
-    LabelList,
-    PointList
-]
+___all__ = [BaseView, CategoryList, LabelList, PointList]
