@@ -36,7 +36,7 @@ class ListPoints(BaseView):
 
     def _get_points(self, request):
         points = Point.objects.values(
-            "id", "longitude", "latitude", "address", "description"
+            "id", "lng", "lat", "address", "description"
         )
         points = self._filter(request, points)
         return points
