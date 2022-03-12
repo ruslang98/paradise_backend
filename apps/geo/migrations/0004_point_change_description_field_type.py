@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('geo', '0003_point_category'),
+        ("geo", "0003_point_category"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='point',
-            name='description',
-            field=models.TextField(verbose_name='Описание'),
+            model_name="point",
+            name="description",
+            field=models.TextField(verbose_name="Описание"),
         ),
     ]

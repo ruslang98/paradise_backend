@@ -6,18 +6,18 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('geo', '0005_label'),
+        ("geo", "0005_label"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='point',
-            old_name='latitude',
-            new_name='lat',
+            model_name="point",
+            old_name="latitude",
+            new_name="lat",
         ),
         migrations.RenameField(
-            model_name='point',
-            old_name='longitude',
-            new_name='long',
+            model_name="point",
+            old_name="longitude",
+            new_name="long",
         ),
     ]
