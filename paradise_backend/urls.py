@@ -3,7 +3,7 @@ from drf_yasg.views import get_schema_view
 
 from django.contrib import admin
 from django.conf import settings
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from rest_framework import permissions
 
 schema_view = get_schema_view(
@@ -35,13 +35,9 @@ url_patterns_swagger = [
     ),
 ]
 
-from apps.geo.views import CategoryList, LabelList, ListPoints
-
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/points", ListPoints.as_view(), name="fractions"),
-    path("api/categories", CategoryList.as_view(), name="categories"),
-    path("api/labels", LabelList.as_view(), name="labels"),
+    path("geo/", include("apps.geo.urls"))
 ]
 
 if settings.DEBUG:
