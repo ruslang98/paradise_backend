@@ -8,6 +8,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CORS_ALLOWED_ORIGINS = ["*"]
+
+
 CONTRIB_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -24,6 +27,7 @@ PROJECT_APPS = [
 EXTERNAL_APPS = [
     "rest_framework",
     "drf_yasg",
+    "corsheaders"
 ]
 
 INSTALLED_APPS = CONTRIB_APPS + PROJECT_APPS + EXTERNAL_APPS
@@ -31,6 +35,7 @@ INSTALLED_APPS = CONTRIB_APPS + PROJECT_APPS + EXTERNAL_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
