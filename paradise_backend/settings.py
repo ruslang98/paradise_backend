@@ -24,6 +24,7 @@ CONTRIB_APPS = [
 
 PROJECT_APPS = [
     "apps.geo",
+    "apps.users",
 ]
 
 EXTERNAL_APPS = ["rest_framework", "drf_yasg", "corsheaders"]
@@ -100,3 +101,5 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "users.User"
