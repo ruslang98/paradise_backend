@@ -13,7 +13,7 @@ class PointSerializer(serializers.ModelSerializer):
 
     """Сериализатор для модели Point"""
 
-    categories = CategorySerializer(many=True)
+    categories = CategorySerializer(many=True, read_only=True)
 
     class Meta:
         model = Point

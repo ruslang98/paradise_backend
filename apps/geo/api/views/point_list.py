@@ -50,3 +50,19 @@ class PointList(BaseView):
         points = self._get_points(request)
         serializer = PointSerializer(points, many=True)
         return Response({"error": "not", "data": serializer.data})
+
+    def post(self, request):
+        categories = request.data.get("categories")
+        if categories:
+            del request.data["categories"]
+
+        validate_data = PointSerializer(request.data)
+        new_point = Point.objects.create(**validate_data.data)
+
+        if categories:
+            for category in categories:
+                PointCategory.objects.create(category_id=category, point=new_point)
+
+        new_point_serializer = PointSerializer(new_point)
+        return Response({"error": "not", "data": new_point_serializer.data})
+
