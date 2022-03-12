@@ -26,7 +26,7 @@ categories_transliteration = {
 
 
 class Command(BaseCommand):
-    help = "Заполняем записи в базе данных"
+    help = "Заполняем записи точек и категорий в базе данных"
 
     def handle(self, *args, **options):
         with open(FIXTURES_PATH, newline="") as fixture:
