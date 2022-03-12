@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("geo", "0003_point_category"),
+        ("geo", "0004_point_change_description_field_type"),
     ]
 
     operations = [
