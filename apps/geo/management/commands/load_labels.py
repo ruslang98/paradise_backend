@@ -1,9 +1,12 @@
+# stdlib
 import json
 import os
 
+# django
 from django.conf import settings
 from django.core.management import BaseCommand
 
+# project
 from apps.geo.models import Category, Label
 
 FIXTURES_PATH = os.path.join(settings.BASE_DIR, "fixtures.csv")

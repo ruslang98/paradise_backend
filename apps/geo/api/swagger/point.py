@@ -1,3 +1,4 @@
+# thirdparty
 from drf_yasg import openapi
 
 point_manual_parameters = [

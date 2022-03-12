@@ -1,10 +1,13 @@
+# thirdparty
 from drf_yasg.utils import swagger_auto_schema
 
+# django
 from rest_framework.response import Response
 
+# project
+from apps.geo.api.swagger import label_manual_parameters
 from apps.geo.api.views import BaseView
 from apps.geo.models import Label
-from apps.geo.api.swagger import label_manual_parameters
 
 
 class LabelList(BaseView):

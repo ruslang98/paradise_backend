@@ -1,5 +1,7 @@
+# django
 from rest_framework.response import Response
 
+# project
 from apps.geo.api.views import BaseView
 from apps.geo.models import Category
 

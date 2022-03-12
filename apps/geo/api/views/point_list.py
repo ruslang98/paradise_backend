@@ -1,10 +1,13 @@
+# thirdparty
 from drf_yasg.utils import swagger_auto_schema
 
+# django
 from rest_framework.response import Response
 
-from apps.geo.api.views import BaseView
-from apps.geo.models import Label, PointCategory, Point
+# project
 from apps.geo.api.swagger import point_manual_parameters
+from apps.geo.api.views import BaseView
+from apps.geo.models import Label, Point, PointCategory
 
 
 class PointList(BaseView):

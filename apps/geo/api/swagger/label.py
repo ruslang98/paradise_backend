@@ -1,3 +1,4 @@
+# thirdparty
 from drf_yasg import openapi
 
 label_manual_parameters = [
