@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.geo.models import Category, Label, Point, PointCategory
-from apps.geo.swagger import point_manual_parameters
+from apps.geo.swagger import point_manual_parameters, label_manual_parameters
 
 
 class BaseView(APIView):
@@ -78,6 +78,10 @@ class LabelList(BaseView):
         lables = self._filters(request, lables)
         return lables
 
+    @swagger_auto_schema(
+        operation_summary="Get all labels",
+        manual_parameters=label_manual_parameters
+    )
     def get(self, request):
         labels = self._get_lables(request)
         return Response({"error": "not", "data": labels})
