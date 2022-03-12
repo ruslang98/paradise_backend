@@ -1,8 +1,12 @@
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
+
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.geo.models import Category, Label, Point, PointCategory
+from apps.geo.swagger import point_manual_parameters
 
 
 class BaseView(APIView):
@@ -43,6 +47,10 @@ class ListPoints(BaseView):
             point['id'] = str(point['id'])
         return points
 
+    @swagger_auto_schema(
+        operation_summary="Get all points",
+        manual_parameters=point_manual_parameters
+    )
     def get(self, request):
         points = self._get_points(request)
         return Response({"error": "not", "data": points})
