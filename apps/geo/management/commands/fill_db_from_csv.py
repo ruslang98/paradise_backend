@@ -1,9 +1,12 @@
+# stdlib
 import csv
 import os
 
+# django
 from django.conf import settings
 from django.core.management import BaseCommand
 
+# project
 from apps.geo.models import Category, Point, PointCategory
 
 FIXTURES_PATH = os.path.join(settings.BASE_DIR, "fixtures.csv")
@@ -26,7 +29,7 @@ categories_transliteration = {
 
 
 class Command(BaseCommand):
-    help = "Заполняем записи в базе данных"
+    help = "Заполняем записи точек и категорий в базе данных"
 
     def handle(self, *args, **options):
         with open(FIXTURES_PATH, newline="") as fixture:
