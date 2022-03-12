@@ -34,7 +34,11 @@ url_patterns_swagger = [
     ),
 ]
 
-urlpatterns = [path("admin/", admin.site.urls), path("geo/", include("apps.geo.urls"))]
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("geo/", include("apps.geo.urls")),
+    path("users/", include("apps.users.urls")),
+]
 
 if settings.DEBUG:
     urlpatterns.extend(url_patterns_swagger)
