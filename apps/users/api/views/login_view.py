@@ -1,6 +1,7 @@
 from drf_yasg.utils import swagger_auto_schema
 
 from django.contrib.auth import login, logout
+from django.utils import timezone
 from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -34,6 +35,8 @@ class LoginView(APIView):
             logout(request)
 
         login(request, user)
+        user.last_login = timezone.now()
+        user.save()
 
         return Response(
             {"data": "Success login", "error": None}, status=status.HTTP_200_OK
