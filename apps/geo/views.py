@@ -14,6 +14,7 @@ class ListPoints(BaseView):
     def _filter(self, request, points):
         categories_filter = request.GET.get("categories")
         labels_filter = request.GET.get("labels")
+        limit_filter = request.GET.get("limit")
         if categories_filter:
             categories_filter = categories_filter.split(",")
             points = points.filter(
@@ -31,6 +32,12 @@ class ListPoints(BaseView):
                     category__id__in=categories
                 ).values_list("point_id")
             )
+        if limit_filter:
+            try:
+                limit_filter = int(limit_filter)
+            except ValueError:
+                return points
+            points = points[:limit_filter]
 
         return points
 
