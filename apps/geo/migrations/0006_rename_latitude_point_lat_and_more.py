@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('geo', '0004_label'),
+        ('geo', '0005_label'),
     ]
 
     operations = [

@@ -44,8 +44,8 @@ class Command(BaseCommand):
 
                 new_point = Point.objects.create(
                     description=row[0],
-                    latitude=latitude_from_csv,
-                    longitude=longitude_from_csv,
+                    lat=latitude_from_csv,
+                    lng=longitude_from_csv,
                     address=address
                 )
 
