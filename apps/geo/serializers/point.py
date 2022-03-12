@@ -9,10 +9,4 @@ class PointSerializer(serializers.Serializer):
 
     class Meta:
         model = Point
-        fields = [
-            "id",
-            "address",
-            "lng",
-            "lat",
-            "description"
-        ]
+        fields = ["id", "address", "lng", "lat", "description"]

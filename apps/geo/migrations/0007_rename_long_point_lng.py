@@ -6,13 +6,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('geo', '0006_rename_latitude_point_lat_and_more'),
+        ("geo", "0006_rename_latitude_point_lat_and_more"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='point',
-            old_name='long',
-            new_name='lng',
+            model_name="point",
+            old_name="long",
+            new_name="lng",
         ),
     ]

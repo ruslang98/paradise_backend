@@ -1,12 +1,11 @@
-from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
-
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.geo.models import Category, Label, Point, PointCategory
-from apps.geo.swagger import point_manual_parameters, label_manual_parameters
+from apps.geo.swagger import label_manual_parameters, point_manual_parameters
 
 
 class BaseView(APIView):
@@ -39,17 +38,14 @@ class ListPoints(BaseView):
         return points
 
     def _get_points(self, request):
-        points = Point.objects.values(
-            "id", "lng", "lat", "address", "description"
-        )
+        points = Point.objects.values("id", "lng", "lat", "address", "description")
         points = self._filter(request, points)
         for point in points:
-            point['id'] = str(point['id'])
+            point["id"] = str(point["id"])
         return points
 
     @swagger_auto_schema(
-        operation_summary="Get all points",
-        manual_parameters=point_manual_parameters
+        operation_summary="Get all points", manual_parameters=point_manual_parameters
     )
     def get(self, request):
         points = self._get_points(request)
@@ -74,13 +70,12 @@ class LabelList(BaseView):
         return labels
 
     def _get_lables(self, request):
-        lables = Label.objects.values("id", "title", "category_id")
-        lables = self._filters(request, lables)
-        return lables
+        labels = Label.objects.values("id", "title", "category_id")
+        labels = self._filters(request, labels)
+        return labels
 
     @swagger_auto_schema(
-        operation_summary="Get all labels",
-        manual_parameters=label_manual_parameters
+        operation_summary="Get all labels", manual_parameters=label_manual_parameters
     )
     def get(self, request):
         labels = self._get_lables(request)

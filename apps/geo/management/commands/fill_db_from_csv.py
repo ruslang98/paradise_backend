@@ -1,11 +1,10 @@
-import os
 import csv
+import os
 
-from django.core.management import BaseCommand
 from django.conf import settings
+from django.core.management import BaseCommand
 
-from apps.geo.models import Point, Category, PointCategory
-
+from apps.geo.models import Category, Point, PointCategory
 
 FIXTURES_PATH = os.path.join(settings.BASE_DIR, "fixtures.csv")
 
@@ -30,7 +29,7 @@ class Command(BaseCommand):
     help = "Заполняем записи в базе данных"
 
     def handle(self, *args, **options):
-        with open(FIXTURES_PATH, newline='') as fixture:
+        with open(FIXTURES_PATH, newline="") as fixture:
             reader = csv.reader(fixture)
             for row in reader:
                 try:
@@ -46,13 +45,15 @@ class Command(BaseCommand):
                     description=row[0],
                     lat=latitude_from_csv,
                     lng=longitude_from_csv,
-                    address=address
+                    address=address,
                 )
 
                 for category_transliteration in categories_from_csv:
                     new_category, _ = Category.objects.get_or_create(
                         transliteration=category_transliteration,
-                        title=categories_transliteration[category_transliteration]
+                        title=categories_transliteration[category_transliteration],
                     )
 
-                    PointCategory.objects.create(point_id=new_point.id, category_id=new_category.id)
+                    PointCategory.objects.create(
+                        point_id=new_point.id, category_id=new_category.id
+                    )
