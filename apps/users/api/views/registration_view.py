@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.users.api.serializers import RegistrationSerializer
-from apps.users.api.services import create_user
+from apps.users.api.services import create_user, make_qr_code
 from apps.users.api.swagger import registration_responses
 
 
@@ -30,6 +30,9 @@ class RegistrationView(APIView):
                 data={"data": None, "error": error},
                 status=status.HTTP_422_UNPROCESSABLE_ENTITY,
             )
+
+        user.qr_code = make_qr_code(user.phone_number)
+        user.save()
 
         return Response(
             data="Success registration",

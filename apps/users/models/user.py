@@ -13,6 +13,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         max_length=32, unique=True, verbose_name="Номер телефона"
     )
     city = models.CharField(max_length=32, null=True, verbose_name="Город")
+    qr_code = models.ImageField(upload_to="qr_codes/", null=True)
     is_staff = models.BooleanField(default=False, verbose_name="Сотрудник")
     is_active = models.BooleanField(default=True, verbose_name="Активный")
     date_joined = models.DateTimeField(auto_now_add=True)
