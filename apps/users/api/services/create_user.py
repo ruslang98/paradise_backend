@@ -13,3 +13,5 @@ def create_user(phone_number: str, first_name: str, password: str) -> Union[tupl
     user.set_password(password)
     user.is_active = False
     user.save()
+
+    return user, None
