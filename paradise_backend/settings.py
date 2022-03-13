@@ -96,6 +96,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
 }
 
+AUTHENTICATION_BACKENDS = ("apps.users.backends.CustomBackend",)
+
+
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
