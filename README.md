@@ -7,6 +7,11 @@
 ```sh
 $ pip install -r requirements.txt
 ```
+### База данных
+
+```sh
+$ docker-compose up db
+```
 
 ### Не забудьте миграции
 
