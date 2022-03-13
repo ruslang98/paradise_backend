@@ -1,6 +1,8 @@
 import os
 
 from pathlib import Path
+from corsheaders.defaults import default_headers
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -9,10 +11,30 @@ SECRET_KEY = "django-insecure-9aa^@mx_^4*609%mg=_e2$-pk*lp_(^g$-$722&e_=@3+5$)pn
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
-CORS_ALLOW_HEADERS = ["*"]
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = default_headers
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:8000',
+]
+CORS_ORIGIN_WHITELIST = [
+    'http//127.0.0.1:3000',
+    'http//localhost:3000',
+]
+
+
+SESSION_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_DOMAIN = "127.0.0.1"
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:3000"
+]
+SESSION_COOKIE_AGE = 36000
+
 
 
 CONTRIB_APPS = [
@@ -119,3 +141,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "users.User"
+
+
